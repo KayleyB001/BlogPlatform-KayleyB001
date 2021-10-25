@@ -10,7 +10,7 @@ namespace BlogPlatform.Controllers
 {
     public class HomeController : Controller
     {
-        private IRepository<Post> depInject;
+
         public IActionResult Index()
         {
             return View();

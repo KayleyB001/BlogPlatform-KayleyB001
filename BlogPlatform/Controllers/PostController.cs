@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlogPlatform.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BlogPlatform.Controllers
 {
@@ -63,7 +64,7 @@ namespace BlogPlatform.Controllers
         public IActionResult Edit(int id = 0)
         {
             Post post = depInject.Posts.Find(id);
-            ViewBag.Categories = depInject.Categories.ToList();
+            ViewBag.CategoryId = new SelectList(depInject.Categories.ToList(), "Id", "Name");
             if (post == null)
             {
                 return NotFound();
@@ -77,6 +78,7 @@ namespace BlogPlatform.Controllers
         public IActionResult Edit(int id, Post post)
         {
             depInject.Entry(post).State = EntityState.Modified;
+            post.CreatedOn = DateTime.Now;
             depInject.SaveChanges();
             ViewBag.Categories = depInject.Categories.ToList();
             return RedirectToAction("Index");
