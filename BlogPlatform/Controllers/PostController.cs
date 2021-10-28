@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BlogPlatform.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -83,6 +82,23 @@ namespace BlogPlatform.Controllers
             ViewBag.Categories = depInject.Categories.ToList();
             return RedirectToAction("Index");
         }
+
+        
+        public IActionResult Detail(int id)
+        {
+            Post post = depInject.Posts.Find(id);
+
+            if (post == null)
+                return View("NotFound");
+            else
+                return View("Details", post);
+
+            return View(depInject.Posts.ToList());
+        }
+
+
+
+
 
 
     }

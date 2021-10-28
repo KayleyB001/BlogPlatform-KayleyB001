@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlogPlatform;
 using BlogPlatform.Models;
-using BlogPlatform.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +30,6 @@ namespace blog_template_practice
             services.AddMvc().AddRazorRuntimeCompilation();
             services.AddDbContext<BlogContext>();
 
-            services.AddScoped<IRepository<Post>, PostRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

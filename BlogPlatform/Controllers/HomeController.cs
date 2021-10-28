@@ -1,5 +1,4 @@
 ﻿using BlogPlatform.Models;
-using BlogPlatform.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
